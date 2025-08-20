@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17.4
+    networks:
+      - network-postgres 
+    container_name: my_postgres
+    environment:
+      - POSTGRES_PASSWORD=pgMaster12345
+      - POSTGRES_USER=nico
+      - POSTGRES_DB=start_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+
+networks:
+  network-postgres:
+    driver: bridge
